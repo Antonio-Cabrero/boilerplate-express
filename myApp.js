@@ -17,6 +17,8 @@ app.get("/json", (req, res) => {
 	}
 	res.json({ message: "Hello json" });
 });
+app.use(bodyparser.urlencoded({ extended: false }));
+app.use(bodyparser.json());
 app.get(
 	"/now",
 	(req, res, next) => {
@@ -33,5 +35,7 @@ app.get("/:word/echo", (req, res) => {
 app.route("/name").get((req, res, next) => {
 	res.json({ name: `${req.query.first} ${req.query.last}` });
 });
-app.use(bodyparser.urlencoded({ extended: false }));
+app.post("/name", (req, res) => {
+	res.json({ name: `${req.body.first} ${req.body.last}` });
+});
 module.exports = app;
