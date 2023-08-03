@@ -1,0 +1,6 @@
+{
+	"version": 1,
+	"name": "boilerplate-express",
+	"builds": [{ "src": "myApp.js", "use": "@vercel/node" }],
+	"routes": [{ "src": "/(.*)", "dest": "/myApp.js" }]
+}
